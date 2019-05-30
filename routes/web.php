@@ -13,6 +13,8 @@
 
 Route::namespace('Buffet')->group(function(){
     Route::get('/', 'SiteController@index')->name('inicio');
+    Route::get('/novo', 'SiteController@form')->name('novo');
+    Route::post('/cadastrar', 'SiteController@cadastrar')->name('cadastrar');
     Route::get('/{id}', 'SiteController@detalhes')->name('detalhes');
     Route::delete('/{id}/del', 'SiteController@deletar')->name('delete');
 });

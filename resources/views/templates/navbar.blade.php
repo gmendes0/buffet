@@ -19,7 +19,7 @@
                     <!-- Conteúdo -->
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="#" class="dropdown-item">Lista</a>
-                        <a href="#" class="dropdown-item">Novo Produto</a>
+                        <a href="{{route('novo')}}" class="dropdown-item">Novo Produto</a>
                     </div>
                 </li>
             </ul>

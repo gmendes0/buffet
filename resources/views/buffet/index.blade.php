@@ -3,24 +3,17 @@
 @section('titulo', 'Buffet - Início')
 
 @section('content')
-<table class="table">
-    <thead class="table-dark">
-        <tr>
-            <td>ID</td>
-            <td>Nome</td>
-            <td>Valor</td>
-            <td>Detalhes</td>
-        </tr>
-    </thead>
-    <tbody>
+    <div class="card-columns">
         @foreach ($produtos as $prod)
-            <tr>
-                <td>{{$prod->id}}</td>
-                <td>{{$prod->nome}}</td>
-                <td>{{$prod->valor}}</td>
-                <td><a href="{{route('detalhes', $prod->id)}}" class="link">detalhes</a></td>
-            </tr>
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <p><span class="text-muted">Nome: </span>{{$prod->nome}}</p>
+                        <p><span class="text-muted">Valor: </span>R$ <span class="brl-valor">{{$prod->valor}}</span></p>
+                        <p><a href="{{route('detalhes', $prod->id)}}">ver mais</a></p>
+                    </div>
+                </div>
+            </div>
         @endforeach
-    </tbody>
-</table>
+    </div>
 @endsection

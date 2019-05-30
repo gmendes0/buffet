@@ -14,4 +14,5 @@
 Route::namespace('Buffet')->group(function(){
     Route::get('/', 'SiteController@index')->name('inicio');
     Route::get('/{id}', 'SiteController@detalhes')->name('detalhes');
+    Route::delete('/{id}/del', 'SiteController@deletar')->name('delete');
 });

@@ -12,21 +12,45 @@
             <!-- conteúdos à esquerda -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a href="#" class="nav-link">Iníco</a></li>
-                <!-- dropdown -->
-                <li class="nav-item dropdown">
-                    <!-- Dropdown Toggler -->
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produtos</a>
-                    <!-- Conteúdo -->
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#" class="dropdown-item">Lista</a>
-                        <a href="{{route('novo')}}" class="dropdown-item">Novo Produto</a>
-                    </div>
-                </li>
+
+                @if(Auth::check())
+                    <!-- dropdown -->
+                    <li class="nav-item dropdown">
+                        <!-- Dropdown Toggler -->
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produtos</a>
+                        <!-- Conteúdo -->
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item">Lista</a>
+                            <a href="{{route('novo')}}" class="dropdown-item">Novo Produto</a>
+                        </div>
+                    </li>
+                @endif
             </ul>
             
             <!-- Direita -->
             <ul class="navbar-nav ml-auto mr-2">
-                <li class="nav-item"><a href="#" class="nav-link">#######</a></li>
+                <!-- login / logoff -->
+                @guest
+
+                    <li class="nav-item"><a href="{{route('login')}}" class="nav-link">login</a></li>
+
+                @else
+
+                    <!-- dropdown -->
+                    <li class="nav-item dropdown">
+                        <!-- Dropdown Toggler -->
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}}</a>
+                        <!-- Conteúdo -->
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <form action="{{route('logout')}}" method="post">
+                                <input class="btn btn-link dropdown-item" type="submit" value="logout"/>
+                                @csrf
+                            </form>
+                            <!-- <a href="{{route('novo')}}" class="dropdown-item">Novo Item</a> -->
+                        </div>
+                    </li>
+
+                @endguest
             </ul>
         </div>
     </div>

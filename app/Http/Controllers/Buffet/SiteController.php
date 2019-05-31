@@ -6,9 +6,31 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Produto;
 use App\Http\Requests\Site\ProdutoFormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
+
+    /**
+     * retorna o nivel de acesso do usuario
+     */
+    public function getNivelAcesso()
+    {
+        if(Auth::check()){
+
+            $nivel = Auth::user()->nivel();
+
+        }else{
+
+            $nivel = false;
+
+        }
+        return $nivel;
+    }
+
+    /**
+     * Lista todos os produtos
+     */
     public function index(Produto $produto){
 
         $produtos = $produto->all();
@@ -16,11 +38,17 @@ class SiteController extends Controller
 
     }
 
+    /**
+     * retorna a view do formulario de cadastro/edição
+     */
     public function form()
     {
         return view('buffet.form');
     }
 
+    /**
+     * Salva os dados de cadastro no banco
+     */
     public function cadastrar(ProdutoFormRequest $request, Produto $produto)
     {
         $dados = $request->all();
@@ -34,6 +62,9 @@ class SiteController extends Controller
         
     }
 
+    /**
+     * retorna a pagina de detalhes dos produtos
+     */
     public function detalhes($id, Produto $produto)
     {
         $prod = $produto->find($id);
@@ -41,6 +72,9 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * deleta o produto do banco de dados
+     */
     public function deletar($id, Produto $produto)
     {
         $prod = $produto->find($id);

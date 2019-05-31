@@ -17,12 +17,13 @@ Auth::routes();
 Route::namespace('Buffet')->group(function(){
 
     Route::get('/', 'SiteController@index')->name('inicio');
-    Route::get('/{id}', 'SiteController@detalhes')->name('detalhes');
+    Route::get('/produto/{id}', 'SiteController@detalhes')->name('detalhes');
     
     Route::middleware('auth')->group(function(){
         
         Route::get('/novo', 'SiteController@form')->name('novo');
         Route::post('/cadastrar', 'SiteController@cadastrar')->name('cadastrar');
+        Route::get('/{id}/update', 'SiteController@formUpdate')->name('atualizar');
         Route::delete('/{id}/del', 'SiteController@deletar')->name('delete');
 
     });

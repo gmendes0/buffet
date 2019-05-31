@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="text-center">
-        <h3 class="text-muted">Novo Produto</h3>
+        <h3 class="text-muted">{{isset($prod) ? $prod->nome.' - Atualizar' : 'Novo Produto'}}</h3>
     </div>
 
     @if(isset($errors))
@@ -17,20 +17,23 @@
         @endif
     @endif
     
-    <form action="{{route('cadastrar')}}" method="post">
+    <form action="{{isset($prod) ? '#' : route('cadastrar')}}" method="post">
         <div class="form-group row">
             <label for="nome" class="col-sm-1 col-form-label">Nome:</label>
             <div class="col-sm-4">
-                <input type="text" name="nome" id="nome" class="form-control" value="{{!empty(old('nome')) ? old('nome') : ''}}"/>
+                <input type="text" name="nome" id="nome" class="form-control" value="{{(isset($prod->nome) ? $prod->nome : '') ?? (!empty(old('nome')) ? old('nome') : '')}}"/>
             </div>
         </div>
         <div class="form-group row">
             <label for="valor" class="col-sm-1 col-form-label">Valor:</label>
             <div class="col-sm-4">
-                <input type="text" name="valor" id="valor" class="form-control" value="{{!empty(old('valor')) ? old('valor') : ''}}"/>
+                <input type="text" name="valor" id="valor" class="form-control" value="{{(isset($prod->valor) ? $prod->valor : '') ?? (!empty(old('valor')) ? old('valor') : '')}}"/>
             </div>
         </div>
         <input type="submit" value="salvar" class="btn btn-primary"/>
-        @csrf()
+        @if(isset($prod))
+            @method('PUT')
+        @endif
+        @csrf
     </form>
 @endsection

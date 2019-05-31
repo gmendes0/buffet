@@ -39,7 +39,7 @@ class SiteController extends Controller
     }
 
     /**
-     * retorna a view do formulario de cadastro/edição
+     * retorna a view do formulario de cadastro
      */
     public function form()
     {
@@ -71,6 +71,14 @@ class SiteController extends Controller
         return view('buffet.detalhes', compact('prod'));
     }
 
+    /**
+     * retorna a pagina do formulário de edição
+     */
+    public function formUpdate($id, Produto $produto)
+    {
+        $prod = $produto->find($id);
+        return view('buffet.form', compact('prod'));
+    }
 
     /**
      * deleta o produto do banco de dados

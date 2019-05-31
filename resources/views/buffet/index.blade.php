@@ -2,6 +2,16 @@
 
 @section('titulo', 'Buffet - Início')
 
+@section('pre')
+    <div id="carouselIndex" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{url('assets/site/buffet/imgs/carousel/0.jpg')}}"/>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="card-columns">
         @foreach ($produtos as $prod)

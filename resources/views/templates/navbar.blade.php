@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark shadow-sm">
     <div class="container-fluid">
         <a href="{{route('inicio')}}" class="navbar-brand h1 mb-0">Buffet</a>
 

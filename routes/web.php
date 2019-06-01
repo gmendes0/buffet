@@ -25,6 +25,7 @@ Route::namespace('Buffet')->group(function(){
         Route::post('/cadastrar', 'SiteController@cadastrar')->name('cadastrar');
         Route::get('/{id}/update', 'SiteController@formUpdate')->name('atualizar');
         Route::delete('/{id}/del', 'SiteController@deletar')->name('delete');
+        Route::put('/salvar/{id}', 'SiteController@salvar')->name('salvar');
 
     });
 

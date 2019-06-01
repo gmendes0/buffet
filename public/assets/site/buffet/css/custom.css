@@ -1,0 +1,35 @@
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+nav.bg-dark{
+    background: #76d7c4 !important;
+}
+
+div.card.card-18{
+    width: 18rem;
+}
+
+div.card.card-16{
+    width: 14rem;
+}
+
+div.card.card-14{
+    width: 14rem;
+}

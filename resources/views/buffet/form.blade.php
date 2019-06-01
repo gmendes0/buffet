@@ -17,7 +17,7 @@
         @endif
     @endif
     
-    <form action="{{isset($prod) ? '#' : route('cadastrar')}}" method="post">
+    <form action="{{isset($prod) ? route('salvar', $prod->id) : route('cadastrar')}}" method="post">
         <div class="form-group row">
             <label for="nome" class="col-sm-1 col-form-label">Nome:</label>
             <div class="col-sm-4">

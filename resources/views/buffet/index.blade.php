@@ -5,9 +5,11 @@
 @section('pre')
     <div id="carouselIndex" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="{{url('assets/site/buffet/imgs/carousel/0.jpg')}}"/>
-            </div>
+            @for($i = 0; $i < $n_imgs; $i++)
+                <div class="carousel-item {{$i == 0 ? 'active' : ''}}">
+                    <img class="d-block w-100" src="{{url('assets/site/buffet/imgs/carousel/'.$i.'.jpg')}}"/>
+                </div>
+            @endfor
         </div>
     </div>
 @endsection
@@ -15,7 +17,7 @@
 @section('content')
     <div class="card-columns">
         @foreach ($produtos as $prod)
-            <div class="card">
+            <div class="card card-14">
                 <div class="card-body">
                     <div class="text-center">
                         <p><span class="text-muted">Nome: </span>{{$prod->nome}}</p>

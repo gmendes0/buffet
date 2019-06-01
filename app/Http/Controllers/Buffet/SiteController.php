@@ -34,7 +34,8 @@ class SiteController extends Controller
     public function index(Produto $produto){
 
         $produtos = $produto->all();
-        return view('buffet.index', compact('produtos'));
+        $n_imgs = 3;
+        return view('buffet.index', compact('produtos', 'n_imgs'));
 
     }
 
@@ -78,6 +79,27 @@ class SiteController extends Controller
     {
         $prod = $produto->find($id);
         return view('buffet.form', compact('prod'));
+    }
+
+    /**
+     * salva as atualizações no banco
+     */
+    public function salvar($id, Produto $produto, ProdutoFormRequest $request)
+    {
+        $prod = $produto->find($id);
+        $dados = $request->all();
+        $update = $prod->update($dados);
+
+        if($update){
+
+            return redirect()->route('inicio');
+
+        }else{
+
+            return redirect()->back();
+            
+        }
+
     }
 
     /**

@@ -13,15 +13,15 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a href="#" class="nav-link">Iníco</a></li>
 
-                @if(Auth::check())
+                @if(Auth::check() && Auth::user()->nivel <= 2)
                     <!-- dropdown -->
                     <li class="nav-item dropdown">
                         <!-- Dropdown Toggler -->
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produtos</a>
                         <!-- Conteúdo -->
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#" class="dropdown-item">Lista</a>
                             <a href="{{route('novo')}}" class="dropdown-item">Novo Produto</a>
+                            <a href="{{route('item-tabela')}}" class="dropdown-item">Visualização em Tabela</a>
                         </div>
                     </li>
                 @endif

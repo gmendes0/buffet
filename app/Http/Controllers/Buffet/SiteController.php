@@ -18,7 +18,7 @@ class SiteController extends Controller
     {
         if(Auth::check()){
 
-            $nivel = Auth::user()->nivel();
+            $nivel = Auth::user()->nivel;
 
         }else{
 
@@ -40,11 +40,25 @@ class SiteController extends Controller
     }
 
     /**
+     * Lista todos os produtos
+     */
+    public function tabela(Produto $produto){
+
+        $produtos = $produto->all();
+        return view('buffet.tabela', compact('produtos'));
+
+    }
+
+    /**
      * retorna a view do formulario de cadastro
      */
     public function form()
     {
-        return view('buffet.form');
+        if($this->getNivelAcesso() <= 2){
+            return view('buffet.form');
+        }else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -77,8 +91,12 @@ class SiteController extends Controller
      */
     public function formUpdate($id, Produto $produto)
     {
-        $prod = $produto->find($id);
-        return view('buffet.form', compact('prod'));
+        if($this->getNivelAcesso() <= 2){
+            $prod = $produto->find($id);
+            return view('buffet.form', compact('prod'));
+        }else{
+            return redirect()->route('/login');
+        }
     }
 
     /**
@@ -97,7 +115,7 @@ class SiteController extends Controller
         }else{
 
             return redirect()->back();
-            
+
         }
 
     }
@@ -119,5 +137,10 @@ class SiteController extends Controller
             return redirect()->route('detalhes', $id);
 
         }
+    }
+
+    public function erroAcesso($nivel)
+    {
+        return view('buffet.acesso', compact('nivel'));
     }
 }

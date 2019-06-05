@@ -46,7 +46,14 @@ class SiteController extends Controller
     public function cadastrar(ProdutoFormRequest $request, Produto $produto)
     {
         $dados = $request->all();
-        $request->file('imagem')->store("buffet/iten/".($produto->latest()->first()->id + 1)."/thumb", 'public');
+
+        if(!empty($produto->latest()->first())){
+            $id = $produto->latest()->first()->id;
+        }else{
+            $id = 0;
+        }
+
+        $request->file('imagem')->store("buffet/iten/".($id + 1)."/thumb", 'public');
         $create = $produto->create($dados);
 
         if($create){

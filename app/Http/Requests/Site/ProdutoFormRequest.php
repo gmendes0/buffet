@@ -31,7 +31,8 @@ class ProdutoFormRequest extends FormRequest
         return [
             'nome' => 'required',
             'valor' => 'required',
-            'imagem' => 'file|image|required|max:20000000|dimensions:max_width=300,max_height=300'
+            'imagem' => 'file|image|required|max:20000000'
+            // 'imagem' => 'file|image|required|max:20000000|dimensions:max_width=300,max_height=300'
         ];
     }
 }

@@ -6,27 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Produto;
 use App\Http\Requests\Site\ProdutoFormRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SiteController extends Controller
 {
-
-    /**
-     * retorna o nivel de acesso do usuario
-     */
-    public function getNivelAcesso()
-    {
-        if(Auth::check()){
-
-            $nivel = Auth::user()->nivel;
-
-        }else{
-
-            $nivel = false;
-
-        }
-        return $nivel;
-    }
 
     /**
      * Lista todos os produtos
@@ -54,11 +37,7 @@ class SiteController extends Controller
      */
     public function form()
     {
-        if($this->getNivelAcesso() <= 2){
-            return view('buffet.form');
-        }else{
-            return redirect()->route('login');
-        }
+        return view('buffet.form');
     }
 
     /**
@@ -67,6 +46,7 @@ class SiteController extends Controller
     public function cadastrar(ProdutoFormRequest $request, Produto $produto)
     {
         $dados = $request->all();
+        $request->file('imagem')->store("buffet/iten/".($produto->latest()->first()->id + 1)."/thumb", 'public');
         $create = $produto->create($dados);
 
         if($create){
@@ -91,12 +71,8 @@ class SiteController extends Controller
      */
     public function formUpdate($id, Produto $produto)
     {
-        if($this->getNivelAcesso() <= 2){
-            $prod = $produto->find($id);
-            return view('buffet.form', compact('prod'));
-        }else{
-            return redirect()->route('/login');
-        }
+        $prod = $produto->find($id);
+        return view('buffet.form', compact('prod'));
     }
 
     /**

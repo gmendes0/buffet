@@ -17,7 +17,7 @@
         @endif
     @endif
     
-    <form action="{{isset($prod) ? route('salvar', $prod->id) : route('cadastrar')}}" method="post">
+    <form action="{{isset($prod) ? route('salvar', $prod->id) : route('cadastrar')}}" method="post" enctype="multipart/form-data">
         <div class="form-group row">
             <label for="nome" class="col-sm-1 col-form-label">Nome:</label>
             <div class="col-sm-4">
@@ -30,6 +30,16 @@
                 <input type="text" name="valor" id="valor" class="form-control" value="{{(isset($prod->valor) ? $prod->valor : '') ?? (!empty(old('valor')) ? old('valor') : '')}}"/>
             </div>
         </div>
+
+        @if(!isset($prod))
+            <div class="form-group row">
+                <label for="imagem" class="col-sm-1 col-form-label">Imagem:</label>
+                <div class="col-sm-4">
+                    <input type="file" name="imagem" id="imagem" class="form-control-file"/>
+                </div>
+            </div>
+        @endif
+
         <input type="submit" value="salvar" class="btn btn-primary"/>
         @if(isset($prod))
             @method('PUT')

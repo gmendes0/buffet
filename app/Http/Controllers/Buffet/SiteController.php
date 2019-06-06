@@ -47,13 +47,14 @@ class SiteController extends Controller
     {
         $dados = $request->all();
 
-        if(!empty($produto->latest()->first())){
-            $id = $produto->latest()->first()->id;
-        }else{
-            $id = 0;
-        }
+        // if(!empty($produto->latest()->first())){
+        //     $id = $produto->latest()->first()->id;
+        // }else{
+        //     $id = 0;
+        // }
 
-        $request->file('imagem')->store("buffet/iten/".($id + 1)."/thumb", 'public');
+        // $request->file('imagem')->store("buffet/iten/".($id + 1)."/thumb", 'public');
+        
         $create = $produto->create($dados);
 
         if($create){

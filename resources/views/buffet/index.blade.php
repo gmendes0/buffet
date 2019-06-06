@@ -18,7 +18,7 @@
     <div class="card-columns">
         @foreach ($produtos as $prod)
             <div class="card card-18">
-                <img class="card-img-top" src="{{asset('storage/buffet/iten/'.$prod->id.'/thumb/')}}"/>
+                {{-- <img class="card-img-top" src="{{asset('storage/buffet/iten/'.$prod->id.'/thumb/')}}"/> --}}
                 <div class="card-body">
                     <div class="text-center">
                         <p><span class="text-muted">Nome: </span>{{$prod->nome}}</p>

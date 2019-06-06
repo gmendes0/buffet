@@ -31,14 +31,14 @@
             </div>
         </div>
 
-        @if(!isset($prod))
+        {{-- @if(!isset($prod))
             <div class="form-group row">
                 <label for="imagem" class="col-sm-1 col-form-label">Imagem:</label>
                 <div class="col-sm-4">
                     <input type="file" name="imagem" id="imagem" class="form-control-file"/>
                 </div>
             </div>
-        @endif
+        @endif --}}
 
         <input type="submit" value="salvar" class="btn btn-primary"/>
         @if(isset($prod))

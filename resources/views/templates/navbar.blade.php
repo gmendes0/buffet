@@ -21,6 +21,7 @@
                         <!-- Conteúdo -->
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{route('novo')}}" class="dropdown-item">Novo Produto</a>
+                            <a href="{{route('register')}}" class="dropdown-item">Cadastrar Usuário</a>
                             <a href="{{route('item-tabela')}}" class="dropdown-item">Visualização em Tabela</a>
                         </div>
                     </li>

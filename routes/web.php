@@ -11,6 +11,7 @@
 |
 */
 
+App::setLocale('pt-br');
 Auth::routes();
 
 

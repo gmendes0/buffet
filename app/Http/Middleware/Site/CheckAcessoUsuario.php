@@ -16,10 +16,19 @@ class CheckAcessoUsuario
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->nivel > 1){
+        $autorizado = false;
+
+        if(Auth::check()){
+            if(Auth::user()->nivel <= 1){
+                $autorizado = true;
+            }
+        }
+
+        if(!$autorizado){
             $nivel = 1;
             return redirect()->route('acesso-erro', $nivel);
         }
+        
         return $next($request);
     }
 }

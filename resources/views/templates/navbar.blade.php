@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark shadow-sm sticky-top">
     <div class="container-fluid">
         <a href="{{route('inicio')}}" class="navbar-brand h1 mb-0">Buffet</a>
 
@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navSite">
             <!-- conteúdos à esquerda -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a href="#" class="nav-link">Iníco</a></li>
+                <li class="nav-item"><a href="{{route('inicio')}}" class="nav-link">Início</a></li>
 
                 @if(Auth::check() && Auth::user()->nivel <= 2)
                     <!-- dropdown -->
